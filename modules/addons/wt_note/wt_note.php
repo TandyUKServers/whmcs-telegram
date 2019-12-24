@@ -4,10 +4,10 @@ if (!defined("WHMCS"))
 
 function wt_note_config() {
 	$configarray = array(
-	"name" => "ماژول اطلاع رسانی از طریق تلگرام",
-	"description" => "اطلاع رسانی به مدیر و پشتبانان سایت از طریق تلگرام - طراحی و کدنویسی شده توسط میلاد مالدار",
+	"name" => "Notification module via telegram",
+	"description" => "Notification module via telegram",
 	"version" => "1.0",
-	"author" => "<a href='http://ltiny.ir' target='_blank' style='color:#0000FF; text-decoration: none;'>میلاد مالدار</a>",
+	"author" => "",
 	"language" => "english",
 	"fields" => array(
 	"key" => array ("FriendlyName" => "Bot Token", "Type" => "text", "Size" => "50", "Description" => "关注 @BotFather 输入 /newbot 创建 bot，创建完成后会提示", "Default" => "", ),
@@ -50,10 +50,10 @@ function wt_note_output($vars) {
 
 	} elseif( $_GET['disable'] == '1' && mysql_num_rows($access_token) ) {
 		full_query("DELETE FROM `wikitelegramnote` WHERE `adminid` = '".$_SESSION['adminid']."'");
-		echo "<div class='infobox'><strong>افزونه اطلاع رسانی با موفقیت غیر فعال شد</strong><br>دیتابیس افزونه اطلاع رسانی با موفقیت حذف و افزونه غیر فعال شد</div>";
+		echo "<div class='infobox'><strong>Notification plugin successfully disabled</strong><br>Update successfully removed and plug-in disabled</div>";
 	} elseif( mysql_num_rows($access_token) && $_POST ){
 		update_query('wikitelegramnote',array('permissions' => serialize($_POST['wt_notefication'])), array('adminid' => $_SESSION['adminid']));
-		echo "<div class='infobox'><strong>تغییرات ذخیره شد</strong><br>تغییرات با موفقیت ذخیره شد</div>";    
+		echo "<div class='infobox'><strong>Changes saved</strong><br>Changes saved successfully</div>";    
 	}
 
 	$access_token = select_query('wikitelegramnote', '', array('adminid' => $_SESSION['adminid']));
@@ -61,24 +61,24 @@ function wt_note_output($vars) {
 	$permissions = unserialize($result['permissions']);   
 
 	if ( !mysql_num_rows($access_token)) {
-		echo "<p><a href='addonmodules.php?module=wt_note&setup=1'>فعال سازی سیستم ارسال اطلاعیه</a></p>";
+		echo "<p><a href='addonmodules.php?module=wt_note&setup=1'>Activate</a></p>";
 	} else {
-		echo "<p><a href='addonmodules.php?module=wt_note&disable=1'>غیرفعال سازی سیستم ارسال اطلاعیه</a></p>";
+		echo "<p><a href='addonmodules.php?module=wt_note&disable=1'>Disable</a></p>";
 		echo '<form method="POST"><table class="form" width="100%" border="0" cellspacing="2" cellpadding="3">
 		<tr>
-		<td class="fieldlabel" width="200px">ارسال پیام زمانی که :</td>
+		<td class="fieldlabel" width="200px">Send message when:</td>
 		<td class="fieldarea">
 		<table width="100%">
 		<tr>
 		<td valign="top">
-		<input type="checkbox" name="wt_notefication[new_client]" value="1" id="wt_notefications_new_client" '.($permissions['new_client'] == "1" ? "checked" : "").'> <label for="wt_notefications_new_client">کاربر جدید عضو شد</label><br>
-		<input type="checkbox" name="wt_notefication[new_invoice]" value="1" id="wt_notefications_new_invoice" '.($permissions['new_invoice'] == "1" ? "checked" : "").'> <label for="wt_notefications_new_invoice">فاکتوری پرداخت شد</label><br>
-		<input type="checkbox" name="wt_notefication[new_update]" value="1" id="wt_notefications_new_update" '.($permissions['new_update'] == "1" ? "checked" : "").'> <label for="wt_notefications_new_update">مشتری به تیکتی پاسخ داد</label><br>
-		<input type="checkbox" name="wt_notefication[new_ticket]" value="1" id="wt_notefications_new_ticket" '.($permissions['new_ticket'] == "1" ? "checked" : "").'> <label for="wt_notefications_new_ticket">تیکت پشتیبانی جدید ایجاد شد</label><br>
+		<input type="checkbox" name="wt_notefication[new_client]" value="1" id="wt_notefications_new_client" '.($permissions['new_client'] == "1" ? "checked" : "").'> <label for="wt_notefications_new_client">New client</label><br>
+		<input type="checkbox" name="wt_notefication[new_invoice]" value="1" id="wt_notefications_new_invoice" '.($permissions['new_invoice'] == "1" ? "checked" : "").'> <label for="wt_notefications_new_invoice">New invoice</label><br>
+		<input type="checkbox" name="wt_notefication[new_update]" value="1" id="wt_notefications_new_update" '.($permissions['new_update'] == "1" ? "checked" : "").'> <label for="wt_notefications_new_update">New update</label><br>
+		<input type="checkbox" name="wt_notefication[new_ticket]" value="1" id="wt_notefications_new_ticket" '.($permissions['new_ticket'] == "1" ? "checked" : "").'> <label for="wt_notefications_new_ticket">New Ticket</label><br>
 		</td>
 		</tr>
 		</table>
 		</table>
-		<p align="center"><input type="submit" value="ذخیره سازی تغییرات" class="button"></p></form>';
+		<p align="center"><input type="submit" value="Save changes" class="button"></p></form>';
 	}
 }
