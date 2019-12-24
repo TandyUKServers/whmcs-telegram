@@ -10,8 +10,8 @@ function wt_note_config() {
 	"author" => "<a href='http://ltiny.ir' target='_blank' style='color:#0000FF; text-decoration: none;'>میلاد مالدار</a>",
 	"language" => "english",
 	"fields" => array(
-	"key" => array ("FriendlyName" => "Bot Token", "Type" => "text", "Size" => "50", "Description" => "بوت توکن دریافت شده از ربات تلگرام - <a href='http://ltiny.ir/telegram-bot' target='_blank' style='color:#0000FF; text-decoration: none;'>آموزش ساخت ربات تلگرام و دریافت Bot Token</a>", "Default" => "", ),
-	"chatid" => array ("FriendlyName" => "Chat ID", "Type" => "text", "Size" => "50", "Description" => "چت آی دی تلگرام خود را وارد کنید - <a href='http://ltiny.ir/telegram-chat-id' target='_blank' style='color:#0000FF; text-decoration: none;'>آموزش دریافت Chat ID تلگرام</a>", "Default" => "", ),
+	"key" => array ("FriendlyName" => "Bot Token", "Type" => "text", "Size" => "50", "Description" => "关注 @BotFather 输入 /newbot 创建 bot，创建完成后会提示", "Default" => "", ),
+	"chatid" => array ("FriendlyName" => "Chat ID", "Type" => "text", "Size" => "50", "Description" => "关注 @RawDataBot 输入 /start 得到结果", "Default" => "", ),
 	));
 	return $configarray;
 }
