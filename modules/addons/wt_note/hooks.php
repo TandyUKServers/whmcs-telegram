@@ -8,7 +8,7 @@ function sendTelegramMessage($pm) {
 
 	$data = array(
 		'chat_id' 	=> $chat_id,
-		'text' 		=> $pm . "\n\n----------------------------------------------------------------------------------------------\n" )
+		'text' 		=> $pm . "\n\n-----------------------------------------------\n" )
 	);
 
 	$curl = curl_init();
@@ -33,12 +33,12 @@ function wt_note_InvoicePaid($vars) {
 
 function wt_note_TicketOpen($vars) {
 	global $customadminpath, $CONFIG;
-	sendTelegramMessage("New ticket\n---------------------------------------------------------------------------------------------- \n\n شناسه تیکت : $vars[ticketid] \n\n دپارتمان : $vars[deptname] \n\n عنوان تیکت : $vars[subject] \n\n". $CONFIG['SystemURL'].'/'.$customadminpath.'/supporttickets.php?action=viewticket&id='.$vars['ticketid']);
+	sendTelegramMessage("New ticket\n---------------------------------------------------------------------------------------------- \n\n Ticket ID: $vars[ticketid] \n\n Department : $vars[deptname] \n\n Subject: $vars[subject] \n\n". $CONFIG['SystemURL'].'/'.$customadminpath.'/supporttickets.php?action=viewticket&id='.$vars['ticketid']);
 }
 
 function wt_note_TicketUserReply($vars) {
 	global $customadminpath, $CONFIG;
-	sendTelegramMessage("Ticket reply\n---------------------------------------------------------------------------------------------- \n\n شناسه تیکت : $vars[ticketid] \n\n دپارتمان : $vars[deptname] \n\n عنوان تیکت : $vars[subject] \n\n". $CONFIG['SystemURL'].'/'.$customadminpath.'/supporttickets.php?action=viewticket&id='.$vars['ticketid'], $application_botkey, $application_chatid);
+	sendTelegramMessage("Ticket reply\n---------------------------------------------------------------------------------------------- \n\n Ticket ID : $vars[ticketid] \n\n Department : $vars[deptname] \n\n Subject: $vars[subject] \n\n". $CONFIG['SystemURL'].'/'.$customadminpath.'/supporttickets.php?action=viewticket&id='.$vars['ticketid'], $application_botkey, $application_chatid);
 
 }
 
