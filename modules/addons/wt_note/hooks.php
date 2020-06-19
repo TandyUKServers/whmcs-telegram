@@ -8,7 +8,7 @@ function sendTelegramMessage($pm) {
 
 	$data = array(
 		'chat_id' 	=> $chat_id,
-		'text' 		=> $pm . "\n\n-----------------------------------------------\n" )
+		'text' 		=> $pm . "\n\n-----------------------------------------------\n"
 	);
 
 	$curl = curl_init();
