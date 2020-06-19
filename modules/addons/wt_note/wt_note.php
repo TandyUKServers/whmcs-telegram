@@ -10,8 +10,8 @@ function wt_note_config() {
 	"author" => "",
 	"language" => "english",
 	"fields" => array(
-	"key" => array ("FriendlyName" => "Bot Token", "Type" => "text", "Size" => "50", "Description" => "关注 @BotFather 输入 /newbot 创建 bot，创建完成后会提示", "Default" => "", ),
-	"chatid" => array ("FriendlyName" => "Chat ID", "Type" => "text", "Size" => "50", "Description" => "关注 @RawDataBot 输入 /start 得到结果", "Default" => "", ),
+	"key" => array ("FriendlyName" => "Bot Token", "Type" => "text", "Size" => "50", "Description" => "Send to @BotFather: /newbot to create your telegram bot", "Default" => "", ),
+	"chatid" => array ("FriendlyName" => "Chat ID", "Type" => "text", "Size" => "50", "Description" => "ChatID to send messages to. If a group, bot must be added to group manually.", "Default" => "", ),
 	));
 	return $configarray;
 }
